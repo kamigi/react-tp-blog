@@ -5,7 +5,7 @@ import propTypes from 'prop-types'
  * @param {string} props.page - The attempted page number
  * @returns JSX element displaying a "Page Not Found" message with the requested page name.
  */
-export const NotFound = props => {
+export const PageNotFound = props => {
     const {page} = props;
     return <>
         <h1>Page Introuvable</h1>
@@ -14,10 +14,10 @@ export const NotFound = props => {
         </p>
     </>
 }
-NotFound.propTypes = {
+PageNotFound.propTypes = {
     page: propTypes.string.isRequired
 }
-NotFound.defaultProps = {
+PageNotFound.defaultProps = {
     page: null
 }
-export default NotFound;
+export default PageNotFound;

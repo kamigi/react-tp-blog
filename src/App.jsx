@@ -4,7 +4,7 @@ import Header from "./components/Header"
 import Home from "./pages/Home"
 import Post from "./pages/Post"
 import Contact from "./pages/Contact"
-import NotFound from "./pages/NotFound"
+import PageNotFound from "./pages/PageNotFound"
 import Alert from "./components/Alert"
 /**
  * Functional component representing the main App.
@@ -34,7 +34,7 @@ const renderPage = (page, param) => {
     case 'home': return <Home />
     case 'post': return <Post id={param}/>
     case 'contact': return <Contact />
-    default: return <NotFound page={page}/>
+    default: return <PageNotFound page={page}/>
   }
 }
 export default App

@@ -4,7 +4,7 @@ import useToggle from '../hooks/useToggle'
 import useDocumentTitle from '../hooks/useDocumentTitle';
 import Loading from "../components/Loading";
 import SinglePost from '../components/Single';
-import PostNotFound from './PostNotFound';
+import PostNotFound from './Post/PostNotFound';
 import Button from '../components/Button'
 import EditPostModal from './Post/EditPostModal';
 /**
@@ -15,23 +15,16 @@ import EditPostModal from './Post/EditPostModal';
  */
 export const Post = props => {
     const { id } = props;
-
     const {loading, data: post, error, setData }= useFetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
-    useDocumentTitle(post?.title)
-
     const [isEditing, toggleEditing] = useToggle(false);
-
     const handleSave = data => {
-        setData({
-            ...post,
-            ...data
-        })
+        setData({ ...post, ...data });
         toggleEditing();
     }
-        
+    useDocumentTitle(post?.title)
+
     if(loading) return <Loading />;
     if(error) return <PostNotFound id={id}/>;
-
     return <>
         <SinglePost post={post} />
         {isEditing && <EditPostModal post={post} onClose={toggleEditing} onSave={handleSave}/>}
